@@ -1,35 +1,36 @@
+
         // Auto-update copyright year
         document.getElementById("copyright-year").textContent = new Date().getFullYear();
 
         // Data for sister concerns logos
         const sisterConcerns = [
-          { 
-            name: "Mozammal Hoque Market", 
-            logo: "/assets/brand/kit/black.png"
-          },
-          { 
-            name: "Mozammal Hoque Foundation", 
-            logo: "/assets/brand/kit/black.png" 
-          },
+            { 
+                name: "Mozammal Hoque Market", 
+                logo: "/assets/brand/kit/black.png"
+            },
+            { 
+                name: "Mozammal Hoque Foundation", 
+                logo: "/assets/brand/kit/black.png" 
+            },
         ];
 
         // Data for team members
         const teamMembers = [
-          { 
-            name: "Mozammal Hoque", 
-            designation: "Chairman & Founder", 
-            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7jkoB3WU_s0RUIOzPsDACw3OrLY9yJpr56x1F_0eNeK_C4fKYvuhM69fOpGYQGp4eXVvGxRu1ICpPeJCjzh9X6Z49qNcfNQ9dKCDAa31sglZ3cIlQPiU4bYsKbz-qPsPmAOSw6pNFtiNZPli13DcTbIWLj6u-uGGMSiHGLUepblFiW8Mh30k0kot3/s16000/Mozammal_Hoque%5B1%5D.png"
-          },
-          { 
-            name: "Marium Akter", 
-            designation: "Co-Founder", 
-            image: "/assets/brand/kit/black.png"
-          },
-          { 
-            name: "Noor Mohammad Siam", 
-            designation: "CEO & Managing Director", 
-            image: "https://noormohammadsiam.com/me.jpg" 
-          },
+            { 
+                name: "Mozammal Hoque", 
+                designation: "Chairman & Founder", 
+                image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7jkoB3WU_s0RUIOzPsDACw3OrLY9yJpr56x1F_0eNeK_C4fKYvuhM69fOpGYQGp4eXVvGxRu1ICpPeJCjzh9X6Z49qNcfNQ9dKCDAa31sglZ3cIlQPiU4bYsKbz-qPsPmAOSw6pNFtiNZPli13DcTbIWLj6u-uGGMSiHGLUepblFiW8Mh30k0kot3/s16000/Mozammal_Hoque%5B1%5D.png"
+            },
+            { 
+                name: "Marium Akter", 
+                designation: "Co-Founder", 
+                image: "/assets/brand/kit/black.png"
+            },
+            { 
+                name: "Noor Mohammad Siam", 
+                designation: "CEO & Managing Director", 
+                image: "https://noormohammadsiam.com/me.jpg" 
+            },
         ];
 
         // DOM elements
@@ -44,75 +45,58 @@
         const aboutBtn = document.getElementById('about-btn');
         const contactBtn = document.getElementById('contact-btn');
         
-        // Slider state
+        // Slider state - UPDATED: Always 1 slide per view
         let logoCurrentSlide = 0;
         let teamCurrentSlide = 0;
-        let logoSlidesPerView = 4;
-        let teamSlidesPerView = 4;
+        let logoSlidesPerView = 1; // Always show 1 logo at a time
+        let teamSlidesPerView = 1; // Always show 1 team member at a time
         let logoAutoSlideInterval;
         let teamAutoSlideInterval;
 
         // Initialize sliders
         function initSliders() {
-            // Set slides per view based on screen width
-            // Mobile: 2 logos at a time, Tablet: 3 logos, Desktop: 4-5 logos
-            if (window.innerWidth < 480) {
-                logoSlidesPerView = 2; // Mobile: 2 logos at a time
-                teamSlidesPerView = 1;
-            } else if (window.innerWidth < 768) {
-                logoSlidesPerView = 2; // Small tablet: 2 logos at a time
-                teamSlidesPerView = 2;
-            } else if (window.innerWidth < 992) {
-                logoSlidesPerView = 3; // Tablet: 3 logos
-                teamSlidesPerView = 3;
-            } else if (window.innerWidth < 1200) {
-                logoSlidesPerView = 4; // Small desktop: 4 logos
-                teamSlidesPerView = 4;
-            } else {
-                logoSlidesPerView = 5; // Large desktop: 5 logos
-                teamSlidesPerView = 4;
-            }
+            // UPDATED: Always show 1 slide at a time for both sections
+            logoSlidesPerView = 1;
+            teamSlidesPerView = 1;
             
-            // Calculate slide width based on slides per view
+            // Calculate slide width based on slides per view (always 100% for 1 slide)
             const logoSlideWidth = 100 / logoSlidesPerView;
             const teamSlideWidth = 100 / teamSlidesPerView;
             
             // Create logo slides
-                logoSlider.innerHTML = '';
-                sisterConcerns.forEach((concern, index) => {
-                  const slide = document.createElement('div');
-                  slide.className = 'slide';
-                  slide.innerHTML = `
+            logoSlider.innerHTML = '';
+            sisterConcerns.forEach((concern, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `
                     <div class="logo-slide">
-                      <!-- Replace div with img -->
-                      <img src="${concern.logo}" alt="${concern.name} Logo" style="max-width: 100%; max-height: 80px;">
+                        <img src="${concern.logo}" alt="${concern.name} Logo">
                     </div>
-                    <p style="margin-top: 10px; font-weight: 500;">${concern.name}</p>
-                  `;
-                  logoSlider.appendChild(slide);
-                });
+                    <p class="logo-slide-name">${concern.name}</p>
+                `;
+                logoSlider.appendChild(slide);
+            });
             
             // Calculate number of dots for logo slider
             const logoDotCount = Math.ceil(sisterConcerns.length / logoSlidesPerView);
             createDots(logoDots, logoDotCount);
             
             // Create team slides
-                teamSlider.innerHTML = '';
-                teamMembers.forEach((member, index) => {
-                  const slide = document.createElement('div');
-                  slide.className = 'slide';
-                  slide.innerHTML = `
+            teamSlider.innerHTML = '';
+            teamMembers.forEach((member, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                slide.innerHTML = `
                     <div class="team-slide">
-                      <!-- Replace div with img -->
-                      <img src="${member.image}" alt="${member.name}" class="team-img">
-                      <div class="team-info">
-                        <h4>${member.name}</h4>
-                        <p>${member.designation}</p>
-                      </div>
+                        <img src="${member.image}" alt="${member.name}" class="team-img">
+                        <div class="team-info">
+                            <h4>${member.name}</h4>
+                            <p>${member.designation}</p>
+                        </div>
                     </div>
-                  `;
-                  teamSlider.appendChild(slide);
-                });
+                `;
+                teamSlider.appendChild(slide);
+            });
             
             // Calculate number of dots for team slider
             const teamDotCount = Math.ceil(teamMembers.length / teamSlidesPerView);
@@ -296,7 +280,7 @@
             }
         }
 
-        // SUB-MENU TOGGLE FUNCTIONALITY - Fixed Version
+        // SUB-MENU TOGGLE FUNCTIONALITY
         // Get all sub-menu items
         const submenuItems = document.querySelectorAll('.has-submenu');
         
