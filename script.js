@@ -10,7 +10,7 @@
           { 
             name: "Mozammal Hoque Foundation", 
             logo: "/assets/brand/kit/black.png" 
-          }
+          },
         ];
 
         // Data for team members
@@ -29,7 +29,7 @@
             name: "Noor Mohammad Siam", 
             designation: "CEO & Managing Director", 
             image: "https://noormohammadsiam.com/me.jpg" 
-          }
+          },
         ];
 
         // DOM elements
