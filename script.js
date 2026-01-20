@@ -1,3 +1,5 @@
+        // Auto-update copyright year
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
 
         // Data for sister concerns logos
         const sisterConcerns = [
