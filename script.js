@@ -23,7 +23,7 @@
           { 
             name: "Marium Akter", 
             designation: "Co-Founder", 
-            image: "images/team/mozammal-hoque.jpg"
+            image: "/assets/brand/kit/black.png"
           },
           { 
             name: "Noor Mohammad Siam", 
