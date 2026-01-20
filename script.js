@@ -3,15 +3,33 @@
 
         // Data for sister concerns logos
         const sisterConcerns = [
-            { name: "Mozammal Hoque Market", logo: "MHM" },
-            { name: "Mozammal Hoque Foundation", logo: "MHF" }
+          { 
+            name: "Mozammal Hoque Market", 
+            logo: "/assets/brand/kit/black.png"
+          },
+          { 
+            name: "Mozammal Hoque Foundation", 
+            logo: "/assets/brand/kit/black.png" 
+          }
         ];
 
         // Data for team members
         const teamMembers = [
-            { name: "Mozammal Hoque", designation: "Chairman & Founder", imgColor: "#1a3a6c" },
-            { name: "Marium Akter", designation: "Co-Founder", imgColor: "#2c5282" },
-            { name: "Noor Mohammad Siam", designation: "CEO & Managing Director", imgColor: "#2d3748" }
+          { 
+            name: "Mozammal Hoque", 
+            designation: "Chairman & Founder", 
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7jkoB3WU_s0RUIOzPsDACw3OrLY9yJpr56x1F_0eNeK_C4fKYvuhM69fOpGYQGp4eXVvGxRu1ICpPeJCjzh9X6Z49qNcfNQ9dKCDAa31sglZ3cIlQPiU4bYsKbz-qPsPmAOSw6pNFtiNZPli13DcTbIWLj6u-uGGMSiHGLUepblFiW8Mh30k0kot3/s16000/Mozammal_Hoque%5B1%5D.png"
+          },
+          { 
+            name: "Marium Akter", 
+            designation: "Co-Founder", 
+            image: "images/team/mozammal-hoque.jpg"
+          },
+          { 
+            name: "Noor Mohammad Siam", 
+            designation: "CEO & Managing Director", 
+            image: "https://noormohammadsiam.com/me.jpg" 
+          }
         ];
 
         // DOM elements
@@ -60,47 +78,41 @@
             const teamSlideWidth = 100 / teamSlidesPerView;
             
             // Create logo slides
-            logoSlider.innerHTML = '';
-            sisterConcerns.forEach((concern, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'slide';
-                slide.style.width = `${logoSlideWidth}%`;
-                slide.innerHTML = `
-                    <div class="logo-slide-container">
-                        <div class="logo-slide">
-                            <div class="logo-content">${concern.logo}</div>
-                        </div>
-                        <div class="logo-slide-name">${concern.name}</div>
+                logoSlider.innerHTML = '';
+                sisterConcerns.forEach((concern, index) => {
+                  const slide = document.createElement('div');
+                  slide.className = 'slide';
+                  slide.innerHTML = `
+                    <div class="logo-slide">
+                      <!-- Replace div with img -->
+                      <img src="${concern.logo}" alt="${concern.name} Logo" style="max-width: 100%; max-height: 80px;">
                     </div>
-                `;
-                logoSlider.appendChild(slide);
-            });
+                    <p style="margin-top: 10px; font-weight: 500;">${concern.name}</p>
+                  `;
+                  logoSlider.appendChild(slide);
+                });
             
             // Calculate number of dots for logo slider
             const logoDotCount = Math.ceil(sisterConcerns.length / logoSlidesPerView);
             createDots(logoDots, logoDotCount);
             
             // Create team slides
-            teamSlider.innerHTML = '';
-            teamMembers.forEach((member, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'slide';
-                slide.style.width = `${teamSlideWidth}%`;
-                slide.innerHTML = `
+                teamSlider.innerHTML = '';
+                teamMembers.forEach((member, index) => {
+                  const slide = document.createElement('div');
+                  slide.className = 'slide';
+                  slide.innerHTML = `
                     <div class="team-slide">
-                        <div class="team-img" style="background-color: ${member.imgColor};">
-                            <div class="team-img-content">
-                                ${member.name.split(' ').map(n => n[0]).join('')}
-                            </div>
-                        </div>
-                        <div class="team-info">
-                            <h4>${member.name}</h4>
-                            <p>${member.designation}</p>
-                        </div>
+                      <!-- Replace div with img -->
+                      <img src="${member.image}" alt="${member.name}" class="team-img">
+                      <div class="team-info">
+                        <h4>${member.name}</h4>
+                        <p>${member.designation}</p>
+                      </div>
                     </div>
-                `;
-                teamSlider.appendChild(slide);
-            });
+                  `;
+                  teamSlider.appendChild(slide);
+                });
             
             // Calculate number of dots for team slider
             const teamDotCount = Math.ceil(teamMembers.length / teamSlidesPerView);
