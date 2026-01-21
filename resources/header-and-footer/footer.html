@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer - Mozammal Hoque Group</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -179,8 +170,8 @@
             }
         }
     </style>
-</head>
-<body>
+
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -237,27 +228,4 @@
         </div>
     </footer>
 
-    <script>
-        // Footer specific JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // Auto-update copyright year
-            document.getElementById("copyright-year").textContent = new Date().getFullYear();
-            
-            // Make footer links work smoothly
-            document.querySelectorAll('.footer-links a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // If it's an anchor link, handle smooth scrolling
-                    if (this.getAttribute('href').startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href').substring(1);
-                        const targetElement = document.getElementById(targetId);
-                        if (targetElement) {
-                            targetElement.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+    
