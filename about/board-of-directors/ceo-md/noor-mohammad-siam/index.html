@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEO Profile | Mozammal Hoque Group</title>
+    <title>CEO Profile | Johnathan Carter</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -44,6 +44,12 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        /* Header Area - Empty for your existing header */
+        .header-placeholder {
+            height: 80px;
+            background: transparent;
         }
         
         /* Hero Section */
@@ -236,31 +242,22 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Contact Section - শুধু contact details, form নয় */
-        .contact {
+        /* CEO Contact Info Section - Changed from .contact to .contact-section */
+        .contact-section {
             padding: 5rem 0;
             background-color: white;
         }
         
-        .contact-content {
+        .contact-section-content {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 4rem;
         }
         
         .contact-info {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .contact-items-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 800px;
-            width: 100%;
+            gap: 1.5rem;
         }
         
         .contact-item {
@@ -279,27 +276,13 @@
             justify-content: center;
             color: var(--secondary);
             font-size: 1.2rem;
-            flex-shrink: 0;
         }
         
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
+        /* Footer Area - Empty for your existing footer */
+        .footer-placeholder {
+            height: 60px;
+            background: transparent;
         }
-        
-        .contact-details h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
-            color: var(--primary);
-        }
-        
-        .contact-details p {
-            color: var(--gray);
-            line-height: 1.5;
-        }
-        
-        
         
         /* Responsive Styles */
         @media (max-width: 992px) {
@@ -308,7 +291,7 @@
                 gap: 3rem;
             }
             
-            .about-content {
+            .about-content, .contact-section-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
@@ -326,10 +309,6 @@
             
             .btn {
                 width: 100%;
-            }
-            
-            .contact-items-container {
-                grid-template-columns: 1fr;
             }
         }
         
@@ -351,21 +330,20 @@
     </style>
 </head>
 <body>
-
-<!-- Header container -->
+    <!-- Header container -->
     <div id="header-container"></div>
-    
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
                 <div class="profile-img-container">
-                    <img src="https://noormohammadsiam.com/me.jpg" alt="Noor Mohammad Siam - CEO" class="profile-img">
-                    <div class="profile-badge">CEO & MD</div>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Johnathan Carter - CEO" class="profile-img">
+                    <div class="profile-badge">CEO & Founder</div>
                 </div>
                 <div class="hero-text">
-                    <h1>Noor Mohammad Siam</h1>
-                    <p class="title">Chief Executive Officer & Managing Director at Mozammal Hoque Group</p>
+                    <h1>Johnathan Carter</h1>
+                    <p class="title">Chief Executive Officer at GlobalCorp</p>
                     <p class="description">Visionary leader with over 15 years of experience in technology and business strategy. Under my leadership, GlobalCorp has grown from a startup to a multinational corporation with presence in 12 countries and annual revenue exceeding $500M.</p>
                     <div class="cta-buttons">
                         <button class="btn btn-primary" id="contactBtn">
@@ -394,8 +372,14 @@
                 <div class="about-text">
                     <h3>Leadership Philosophy</h3>
                     <p>I believe that true leadership is about serving others and creating an environment where people can do their best work. My approach combines strategic vision with practical execution.</p>
-                    <p>Throughout my career, I've focused on building diverse, high-performing teams that challenge the status quo and drive meaningful change.</p>
-                    <p>I'm passionate about mentoring the next generation of leaders and regularly speak at industry conferences and universities about leadership, innovation, and the future of technology.</p>
+                    <p>Key principles that guide my leadership:</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.8rem;">Empowerment and delegation</li>
+                        <li style="margin-bottom: 0.8rem;">Transparent communication</li>
+                        <li style="margin-bottom: 0.8rem;">Data-driven decision making</li>
+                        <li style="margin-bottom: 0.8rem;">Continuous learning and adaptation</li>
+                        <li style="margin-bottom: 0.8rem;">Ethical and sustainable practices</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -430,68 +414,79 @@
         </div>
     </section>
 
-    <!-- Contact Section - শুধু contact details, form নেই -->
-    <section class="contact" id="contact">
+    <!-- CEO Contact Info Section (Changed from .contact to .contact-section) -->
+    <section class="contact-section" id="ceo-contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
+            <h2 class="section-title">CEO Contact Information</h2>
+            <div class="contact-section-content">
                 <div class="contact-info">
-                    <div class="contact-items-container">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Email</h4>
-                                <p>ceo@mhg.info.bd</p>
-                                <p>For business inquiries</p>
-                            </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Phone</h4>
-                                <p>+880 9638 325600</p>
-                                <p>Direct line to executive office</p>
-                            </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>johnathan.carter@globalcorp.com</p>
+                            <p style="font-size: 0.9rem; color: var(--gray);">For business inquiries and speaking engagements</p>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Office</h4>
-                                <p>Bhaukshar Bazar, Mozammal Hoque Market</p>
-                                <p>Cumilla 3500, Bangladesh</p>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Availability</h4>
-                                <p>Monday - Friday: 9:00 AM - 5:00 PM EST</p>
-                                <p>Response time: Within 24 hours</p>
-                            </div>
+                        <div>
+                            <h4>Office Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                            <p style="font-size: 0.9rem; color: var(--gray);">Available Monday-Friday, 9AM-5PM EST</p>
                         </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Corporate Office</h4>
+                            <p>123 Business Avenue, Suite 1000<br>New York, NY 10001</p>
+                            <p style="font-size: 0.9rem; color: var(--gray);">By appointment only</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h4>Executive Assistant</h4>
+                            <p>Sarah Johnson</p>
+                            <p style="font-size: 0.9rem; color: var(--gray);">sarah.johnson@globalcorp.com | Ext. 1001</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Preferred Contact Method</h3>
+                    <p style="margin-bottom: 1.5rem;">For the most efficient response, please use email for initial contact. My executive assistant will prioritize and schedule appropriate meetings based on the nature of your inquiry.</p>
+                    
+                    <div style="background-color: var(--light); padding: 1.5rem; border-radius: var(--border-radius); margin-top: 2rem;">
+                        <h4 style="color: var(--secondary); margin-bottom: 1rem;">Response Time</h4>
+                        <p style="margin-bottom: 0.5rem;"><i class="fas fa-clock" style="color: var(--secondary); margin-right: 0.5rem;"></i> Emails: Within 48 hours</p>
+                        <p style="margin-bottom: 0.5rem;"><i class="fas fa-clock" style="color: var(--secondary); margin-right: 0.5rem;"></i> Phone calls: Next business day return call</p>
+                        <p><i class="fas fa-clock" style="color: var(--secondary); margin-right: 0.5rem;"></i> Meeting requests: 1-2 weeks advance notice preferred</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- Footer container -->
+    <!-- Footer container -->
     <div id="footer-container"></div>
 
     <script src="/resources/header-and-footer/load-header-footer.js"></script>
-    
+
+
     <script>
         // Contact button scroll
         document.getElementById('contactBtn').addEventListener('click', () => {
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            // Scroll to CEO contact section
+            document.getElementById('ceo-contact').scrollIntoView({ behavior: 'smooth' });
         });
         
         // Download CV button
@@ -503,7 +498,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Animate elements on scroll
             const animateOnScroll = () => {
-                const elements = document.querySelectorAll('.hero-content, .about-content, .timeline-item, .contact-item');
+                const elements = document.querySelectorAll('.hero-content, .about-text, .timeline-item, .contact-item');
                 
                 elements.forEach(element => {
                     const elementPosition = element.getBoundingClientRect().top;
