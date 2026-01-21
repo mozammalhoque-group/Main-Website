@@ -29,7 +29,7 @@
             { 
                 name: "Noor Mohammad Siam", 
                 designation: "CEO & Managing Director", 
-                image: "https://noormohammadsiam.com/me.jpg" 
+                image: "https://noormohammadsiam.github.io/noor-mohammad-siam.jpg" 
             },
         ];
 
