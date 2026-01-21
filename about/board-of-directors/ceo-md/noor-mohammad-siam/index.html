@@ -8,16 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a365d;
-            --secondary: #2d6bc4;
-            --accent: #e63946;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
-            --transition: all 0.3s ease;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            --border-radius: 10px;
+            --ceo-primary: #1a365d;
+            --ceo-secondary: #2d6bc4;
+            --ceo-accent: #e63946;
+            --ceo-light: #f8f9fa;
+            --ceo-dark: #343a40;
+            --ceo-gray: #6c757d;
+            --ceo-light-gray: #e9ecef;
+            --ceo-transition: all 0.3s ease;
+            --ceo-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --ceo-border-radius: 10px;
         }
         
         * {
@@ -28,18 +28,18 @@
         
         body {
             font-family: 'Open Sans', sans-serif;
-            color: var(--dark);
+            color: var(--ceo-dark);
             background-color: #f5f7fb;
             line-height: 1.6;
         }
         
-        h1, h2, h3, h4 {
+        .ceo-h1, .ceo-h2, .ceo-h3, .ceo-h4 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             margin-bottom: 1rem;
         }
         
-        .container {
+        .ceo-container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
@@ -47,86 +47,86 @@
         }
         
         /* Header Area - Empty for your existing header */
-        .header-placeholder {
+        .ceo-header-placeholder {
             height: 80px;
             background: transparent;
         }
         
         /* Hero Section */
-        .hero {
+        .ceo-hero {
             padding: 5rem 0;
             background-color: white;
         }
         
-        .hero-content {
+        .ceo-hero-content {
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 4rem;
             align-items: center;
         }
         
-        .profile-img-container {
+        .ceo-profile-img-container {
             position: relative;
             max-width: 400px;
         }
         
-        .profile-img {
+        .ceo-profile-img {
             width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            border-radius: var(--ceo-border-radius);
+            box-shadow: var(--ceo-shadow);
+            transition: var(--ceo-transition);
         }
         
-        .profile-img:hover {
+        .ceo-profile-img:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
-        .profile-badge {
+        .ceo-profile-badge {
             position: absolute;
             top: 20px;
             right: -10px;
-            background-color: var(--accent);
+            background-color: var(--ceo-accent);
             color: white;
             padding: 0.8rem 1.2rem;
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.9rem;
-            box-shadow: var(--shadow);
+            box-shadow: var(--ceo-shadow);
         }
         
-        .hero-text h1 {
+        .ceo-hero-text .ceo-h1 {
             font-size: 2.8rem;
             line-height: 1.2;
             margin-bottom: 0.5rem;
-            color: var(--primary);
+            color: var(--ceo-primary);
         }
         
-        .title {
+        .ceo-title {
             font-size: 1.3rem;
-            color: var(--secondary);
+            color: var(--ceo-secondary);
             margin-bottom: 1.5rem;
             font-weight: 500;
         }
         
-        .description {
+        .ceo-description {
             font-size: 1.1rem;
-            color: var(--gray);
+            color: var(--ceo-gray);
             margin-bottom: 2rem;
         }
         
-        .cta-buttons {
+        .ceo-cta-buttons {
             display: flex;
             gap: 1rem;
             margin-top: 2rem;
         }
         
-        .btn {
+        .ceo-btn {
             padding: 0.9rem 2rem;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
+            transition: var(--ceo-transition);
             border: none;
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
@@ -136,188 +136,205 @@
             gap: 0.5rem;
         }
         
-        .btn-primary {
-            background-color: var(--secondary);
+        .ceo-btn-primary {
+            background-color: var(--ceo-secondary);
             color: white;
         }
         
-        .btn-primary:hover {
-            background-color: var(--primary);
+        .ceo-btn-primary:hover {
+            background-color: var(--ceo-primary);
             transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            box-shadow: var(--ceo-shadow);
         }
         
-        .btn-secondary {
+        .ceo-btn-secondary {
             background-color: transparent;
-            color: var(--secondary);
-            border: 2px solid var(--secondary);
+            color: var(--ceo-secondary);
+            border: 2px solid var(--ceo-secondary);
         }
         
-        .btn-secondary:hover {
+        .ceo-btn-secondary:hover {
             background-color: rgba(45, 107, 196, 0.1);
             transform: translateY(-3px);
         }
         
         /* About Section */
-        .about {
+        .ceo-about {
             padding: 5rem 0;
             background-color: white;
         }
         
-        .section-title {
+        .ceo-section-title {
             text-align: center;
             font-size: 2.2rem;
-            color: var(--primary);
+            color: var(--ceo-primary);
             margin-bottom: 3rem;
         }
         
-        .about-content {
+        .ceo-about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
         }
         
-        .about-text h3 {
+        .ceo-about-text .ceo-h3 {
             font-size: 1.8rem;
-            color: var(--primary);
+            color: var(--ceo-primary);
             margin-bottom: 1.5rem;
         }
         
         /* Experience Section */
-        .experience {
+        .ceo-experience {
             padding: 5rem 0;
-            background-color: var(--light);
+            background-color: var(--ceo-light);
         }
         
-        .timeline {
+        .ceo-timeline {
             max-width: 800px;
             margin: 0 auto;
         }
         
-        .timeline-item {
+        .ceo-timeline-item {
             position: relative;
             padding-left: 3rem;
             margin-bottom: 3rem;
         }
         
-        .timeline-item:last-child {
+        .ceo-timeline-item:last-child {
             margin-bottom: 0;
         }
         
-        .timeline-item::before {
+        .ceo-timeline-item::before {
             content: '';
             position: absolute;
             left: 0;
             top: 5px;
             width: 15px;
             height: 15px;
-            background-color: var(--secondary);
+            background-color: var(--ceo-secondary);
             border-radius: 50%;
             z-index: 1;
         }
         
-        .timeline-item::after {
+        .ceo-timeline-item::after {
             content: '';
             position: absolute;
             left: 7px;
             top: 5px;
             width: 1px;
             height: calc(100% + 3rem);
-            background-color: var(--secondary);
+            background-color: var(--ceo-secondary);
         }
         
-        .timeline-item:last-child::after {
+        .ceo-timeline-item:last-child::after {
             height: 100%;
         }
         
-        .timeline-date {
-            color: var(--secondary);
+        .ceo-timeline-date {
+            color: var(--ceo-secondary);
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
         
-        .timeline-title {
+        .ceo-timeline-title {
             font-size: 1.3rem;
-            color: var(--primary);
+            color: var(--ceo-primary);
             margin-bottom: 0.5rem;
         }
         
-        /* CEO Contact Info Section - Changed from .contact to .contact-section */
-        .contact-section {
+        /* CEO Contact Info Section */
+        .ceo-contact-section {
             padding: 5rem 0;
             background-color: white;
         }
         
-        .contact-section-content {
+        .ceo-contact-section-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
         }
         
-        .contact-info {
+        .ceo-contact-info {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
         
-        .contact-item {
+        .ceo-contact-item {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
         }
         
-        .contact-icon {
-            background-color: var(--light-gray);
+        .ceo-contact-icon {
+            background-color: var(--ceo-light-gray);
             width: 50px;
             height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--secondary);
+            color: var(--ceo-secondary);
             font-size: 1.2rem;
+            flex-shrink: 0;
         }
         
         /* Footer Area - Empty for your existing footer */
-        .footer-placeholder {
+        .ceo-footer-placeholder {
             height: 60px;
             background: transparent;
         }
         
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .hero-content {
+            .ceo-hero-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
             
-            .about-content, .contact-section-content {
+            .ceo-about-content, .ceo-contact-section-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
+            }
+            
+            .ceo-contact-info {
+                max-width: 600px;
+                margin: 0 auto;
             }
         }
         
         @media (max-width: 768px) {
-            .hero-text h1 {
+            .ceo-hero-text .ceo-h1 {
                 font-size: 2.2rem;
             }
             
-            .cta-buttons {
+            .ceo-cta-buttons {
                 flex-direction: column;
                 width: 100%;
             }
             
-            .btn {
+            .ceo-btn {
                 width: 100%;
+            }
+            
+            .ceo-contact-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
+            .ceo-contact-icon {
+                margin-bottom: 0.5rem;
             }
         }
         
         /* Animation for elements */
-        .animate {
-            animation: fadeInUp 0.8s ease forwards;
+        .ceo-animate {
+            animation: ceo-fadeInUp 0.8s ease forwards;
         }
         
-        @keyframes fadeInUp {
+        @keyframes ceo-fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -327,6 +344,16 @@
                 transform: translateY(0);
             }
         }
+        
+        /* CEO specific styles for lists */
+        .ceo-list {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .ceo-list-item {
+            margin-bottom: 0.8rem;
+        }
     </style>
 </head>
 <body>
@@ -334,22 +361,22 @@
     <div id="header-container"></div>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="profile-img-container">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Johnathan Carter - CEO" class="profile-img">
-                    <div class="profile-badge">CEO & Founder</div>
+    <section class="ceo-hero" id="ceo-home">
+        <div class="ceo-container">
+            <div class="ceo-hero-content">
+                <div class="ceo-profile-img-container">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Johnathan Carter - CEO" class="ceo-profile-img">
+                    <div class="ceo-profile-badge">CEO & Founder</div>
                 </div>
-                <div class="hero-text">
-                    <h1>Johnathan Carter</h1>
-                    <p class="title">Chief Executive Officer at GlobalCorp</p>
-                    <p class="description">Visionary leader with over 15 years of experience in technology and business strategy. Under my leadership, GlobalCorp has grown from a startup to a multinational corporation with presence in 12 countries and annual revenue exceeding $500M.</p>
-                    <div class="cta-buttons">
-                        <button class="btn btn-primary" id="contactBtn">
+                <div class="ceo-hero-text">
+                    <h1 class="ceo-h1">Johnathan Carter</h1>
+                    <p class="ceo-title">Chief Executive Officer at GlobalCorp</p>
+                    <p class="ceo-description">Visionary leader with over 15 years of experience in technology and business strategy. Under my leadership, GlobalCorp has grown from a startup to a multinational corporation with presence in 12 countries and annual revenue exceeding $500M.</p>
+                    <div class="ceo-cta-buttons">
+                        <button class="ceo-btn ceo-btn-primary" id="ceo-contactBtn">
                             <i class="fas fa-envelope"></i> Contact Me
                         </button>
-                        <button class="btn btn-secondary" id="downloadCV">
+                        <button class="ceo-btn ceo-btn-secondary" id="ceo-downloadCV">
                             <i class="fas fa-download"></i> Download CV
                         </button>
                     </div>
@@ -359,26 +386,26 @@
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Driving Innovation & Growth</h3>
+    <section class="ceo-about" id="ceo-about">
+        <div class="ceo-container">
+            <h2 class="ceo-section-title">About Me</h2>
+            <div class="ceo-about-content">
+                <div class="ceo-about-text">
+                    <h3 class="ceo-h3">Driving Innovation & Growth</h3>
                     <p>As CEO of GlobalCorp, I'm responsible for setting the company's strategic direction, driving growth, and ensuring we deliver exceptional value to our clients and shareholders.</p>
                     <p>My leadership philosophy is centered on fostering innovation, empowering teams, and maintaining a customer-centric approach to business. I believe that sustainable success comes from creating win-win scenarios for all stakeholders.</p>
                     <p>Before founding GlobalCorp, I held executive positions at several Fortune 500 companies, where I led digital transformation initiatives and drove operational excellence.</p>
                 </div>
-                <div class="about-text">
-                    <h3>Leadership Philosophy</h3>
+                <div class="ceo-about-text">
+                    <h3 class="ceo-h3">Leadership Philosophy</h3>
                     <p>I believe that true leadership is about serving others and creating an environment where people can do their best work. My approach combines strategic vision with practical execution.</p>
                     <p>Key principles that guide my leadership:</p>
-                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                        <li style="margin-bottom: 0.8rem;">Empowerment and delegation</li>
-                        <li style="margin-bottom: 0.8rem;">Transparent communication</li>
-                        <li style="margin-bottom: 0.8rem;">Data-driven decision making</li>
-                        <li style="margin-bottom: 0.8rem;">Continuous learning and adaptation</li>
-                        <li style="margin-bottom: 0.8rem;">Ethical and sustainable practices</li>
+                    <ul class="ceo-list">
+                        <li class="ceo-list-item">Empowerment and delegation</li>
+                        <li class="ceo-list-item">Transparent communication</li>
+                        <li class="ceo-list-item">Data-driven decision making</li>
+                        <li class="ceo-list-item">Continuous learning and adaptation</li>
+                        <li class="ceo-list-item">Ethical and sustainable practices</li>
                     </ul>
                 </div>
             </div>
@@ -386,111 +413,94 @@
     </section>
 
     <!-- Experience Section -->
-    <section class="experience" id="experience">
-        <div class="container">
-            <h2 class="section-title">Career Timeline</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2020 - Present</div>
-                    <div class="timeline-title">CEO & Founder</div>
+    <section class="ceo-experience" id="ceo-experience">
+        <div class="ceo-container">
+            <h2 class="ceo-section-title">Career Timeline</h2>
+            <div class="ceo-timeline">
+                <div class="ceo-timeline-item">
+                    <div class="ceo-timeline-date">2020 - Present</div>
+                    <div class="ceo-timeline-title">CEO & Founder</div>
                     <p>GlobalCorp - Grew the company from a 10-person startup to a 500+ employee multinational with presence in 12 countries.</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2016 - 2020</div>
-                    <div class="timeline-title">Chief Operating Officer</div>
+                <div class="ceo-timeline-item">
+                    <div class="ceo-timeline-date">2016 - 2020</div>
+                    <div class="ceo-timeline-title">Chief Operating Officer</div>
                     <p>TechNova Inc. - Led digital transformation initiatives that increased operational efficiency by 40% and reduced costs by 25%.</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2012 - 2016</div>
-                    <div class="timeline-title">VP of Business Development</div>
+                <div class="ceo-timeline-item">
+                    <div class="ceo-timeline-date">2012 - 2016</div>
+                    <div class="ceo-timeline-title">VP of Business Development</div>
                     <p>Innovate Solutions - Drove expansion into new markets, resulting in 300% revenue growth over 4 years.</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2008 - 2012</div>
-                    <div class="timeline-title">Senior Strategy Consultant</div>
+                <div class="ceo-timeline-item">
+                    <div class="ceo-timeline-date">2008 - 2012</div>
+                    <div class="ceo-timeline-title">Senior Strategy Consultant</div>
                     <p>Global Consulting Partners - Advised Fortune 500 companies on growth strategies and digital transformation.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CEO Contact Info Section (Changed from .contact to .contact-section) -->
-    <section class="contact-section" id="ceo-contact">
-        <div class="container">
-            <h2 class="section-title">CEO Contact Information</h2>
-            <div class="contact-section-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
+    <!-- CEO Contact Info Section -->
+    <section class="ceo-contact-section" id="ceo-contact">
+        <div class="ceo-container">
+            <h2 class="ceo-section-title">CEO Contact Information</h2>
+            <div class="ceo-contact-section-content">
+                <div class="ceo-contact-info">
+                    <div class="ceo-contact-item">
+                        <div class="ceo-contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h4>Email</h4>
+                            <h4 class="ceo-h4">Email</h4>
                             <p>johnathan.carter@globalcorp.com</p>
-                            <p style="font-size: 0.9rem; color: var(--gray);">For business inquiries and speaking engagements</p>
+                            <p style="font-size: 0.9rem; color: var(--ceo-gray);">For business inquiries and speaking engagements</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
+                    <div class="ceo-contact-item">
+                        <div class="ceo-contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h4>Office Phone</h4>
+                            <h4 class="ceo-h4">Office Phone</h4>
                             <p>+1 (555) 123-4567</p>
-                            <p style="font-size: 0.9rem; color: var(--gray);">Available Monday-Friday, 9AM-5PM EST</p>
+                            <p style="font-size: 0.9rem; color: var(--ceo-gray);">Available Monday-Friday, 9AM-5PM EST</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
+                    <div class="ceo-contact-item">
+                        <div class="ceo-contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h4>Corporate Office</h4>
+                            <h4 class="ceo-h4">Corporate Office</h4>
                             <p>123 Business Avenue, Suite 1000<br>New York, NY 10001</p>
-                            <p style="font-size: 0.9rem; color: var(--gray);">By appointment only</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <div>
-                            <h4>Executive Assistant</h4>
-                            <p>Sarah Johnson</p>
-                            <p style="font-size: 0.9rem; color: var(--gray);">sarah.johnson@globalcorp.com | Ext. 1001</p>
+                            <p style="font-size: 0.9rem; color: var(--ceo-gray);">By appointment only</p>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Preferred Contact Method</h3>
-                    <p style="margin-bottom: 1.5rem;">For the most efficient response, please use email for initial contact. My executive assistant will prioritize and schedule appropriate meetings based on the nature of your inquiry.</p>
-                    
-                    <div style="background-color: var(--light); padding: 1.5rem; border-radius: var(--border-radius); margin-top: 2rem;">
-                        <h4 style="color: var(--secondary); margin-bottom: 1rem;">Response Time</h4>
-                        <p style="margin-bottom: 0.5rem;"><i class="fas fa-clock" style="color: var(--secondary); margin-right: 0.5rem;"></i> Emails: Within 48 hours</p>
-                        <p style="margin-bottom: 0.5rem;"><i class="fas fa-clock" style="color: var(--secondary); margin-right: 0.5rem;"></i> Phone calls: Next business day return call</p>
-                        <p><i class="fas fa-clock" style="color: var(--secondary); margin-right: 0.5rem;"></i> Meeting requests: 1-2 weeks advance notice preferred</p>
-                    </div>
+                    <!-- এই অংশটি খালি রাখা হয়েছে যাতে ডিজাইন আগের মতো থাকে -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer container -->
+ <!-- Footer container -->
     <div id="footer-container"></div>
 
-    <script src="/resources/header-and-footer/load-header-footer.jss"></script>
+
+<script src="/resources/header-and-footer/load-header-footer.js"></script>
 
 
     <script>
         // Contact button scroll
-        document.getElementById('contactBtn').addEventListener('click', () => {
+        document.getElementById('ceo-contactBtn').addEventListener('click', () => {
             // Scroll to CEO contact section
             document.getElementById('ceo-contact').scrollIntoView({ behavior: 'smooth' });
         });
         
         // Download CV button
-        document.getElementById('downloadCV').addEventListener('click', () => {
+        document.getElementById('ceo-downloadCV').addEventListener('click', () => {
             alert('In a real application, this would download the CEO\'s CV. For this demo, we\'re just showing this message.');
         });
         
@@ -498,14 +508,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Animate elements on scroll
             const animateOnScroll = () => {
-                const elements = document.querySelectorAll('.hero-content, .about-text, .timeline-item, .contact-item');
+                const elements = document.querySelectorAll('.ceo-hero-content, .ceo-about-text, .ceo-timeline-item, .ceo-contact-item');
                 
                 elements.forEach(element => {
                     const elementPosition = element.getBoundingClientRect().top;
                     const screenPosition = window.innerHeight / 1.2;
                     
                     if (elementPosition < screenPosition) {
-                        element.classList.add('animate');
+                        element.classList.add('ceo-animate');
                     }
                 });
             };
