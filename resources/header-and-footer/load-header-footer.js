@@ -1,19 +1,72 @@
-
-        // Load header and footer
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load header
-            fetch('/resources/header-and-footer/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-container').innerHTML = data;
-                    // Update navigation as needed
-                });
-            
-            // Load footer
-            fetch('/resources/header-and-footer/footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-container').innerHTML = data;
-                });
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ১. হেডার লোড করা
+    fetch('/resources/header-and-footer/header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-container').innerHTML = data;
+            // হেডার লোড হওয়ার পর মেনু ফাংশন চালু করা
+            initHeaderFunctions();
         });
     
+    // ২. ফুটার লোড করা
+    fetch('/resources/header-and-footer/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-container').innerHTML = data;
+            // ফুটার লোড হওয়ার পর সাল আপডেট করা
+            initFooterFunctions();
+        });
+});
+
+// হেডারের মেনু কাজ করার জন্য ফাংশন
+function initHeaderFunctions() {
+    const dropdownBtn = document.getElementById('dropdown-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    
+    if (dropdownBtn && dropdownMenu) {
+        // মেনু বাটন ক্লিক
+        dropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // সাব-মেনু টগল (About, Member, etc.)
+        const submenuItems = document.querySelectorAll('.has-submenu');
+        submenuItems.forEach(item => {
+            const link = item.querySelector('.dropdown-item');
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // অন্য সব সাব-মেনু বন্ধ করা
+                submenuItems.forEach(i => {
+                    if(i !== item) {
+                        i.classList.remove('active');
+                        i.querySelector('.sub-menu').classList.remove('show');
+                    }
+                });
+
+                item.classList.toggle('active');
+                item.querySelector('.sub-menu').classList.toggle('show');
+            });
+        });
+
+        // স্ক্রিনের কোথাও ক্লিক করলে মেনু বন্ধ করা
+        document.addEventListener('click', () => {
+            dropdownMenu.classList.remove('show');
+            submenuItems.forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.sub-menu').classList.remove('show');
+            });
+        });
+    }
+}
+
+// ফুটারের সাল আপডেট করার ফাংশন
+function initFooterFunctions() {
+    const yearSpan = document.getElementById("copyright-year");
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+}
