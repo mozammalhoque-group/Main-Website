@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Page Title - প্রতিটি পেইজে পরিবর্তন করুন -->
-    <title>Page Title | Mozammal Hoque Group</title>
+    <!-- Page Title - Change for each page -->
+    <title>Empty Page | Mozammal Hoque Group</title>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Page Specific CSS - প্রতিটি পেইজে পরিবর্তন/যোগ করুন -->
+    <!-- Basic Styles -->
     <style>
         * {
             margin: 0;
@@ -41,19 +41,14 @@
             flex-direction: column;
         }
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        /* Main Content Area */
+        /* Main Content Area - COMPLETELY EMPTY */
         .main-content {
             flex: 1;
             width: 100%;
-            padding: 40px 0;
+            /* No padding, no margin - completely empty */
         }
 
+        /* Optional: Add styles when you add content later */
         .container {
             width: 100%;
             max-width: 1400px;
@@ -61,50 +56,8 @@
             padding: 0 20px;
         }
 
-        /* Page Header/Banner - প্রয়োজন হলে ব্যবহার করুন */
-        .page-header {
-            background: linear-gradient(rgba(26, 58, 108, 0.9), rgba(26, 58, 108, 0.8)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .page-header h1 {
-            color: white;
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
         /* Responsive Styles */
-        @media (max-width: 768px) {
-            .page-header {
-                padding: 60px 0;
-            }
-            
-            .page-header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .main-content {
-                padding: 30px 0;
-            }
-        }
-
         @media (max-width: 576px) {
-            .page-header h1 {
-                font-size: 1.8rem;
-            }
-            
             .container {
                 padding: 0 15px;
             }
@@ -115,32 +68,25 @@
     <!-- Header container -->
     <div id="header-container"></div>
     
-    <!-- Main Content Area -->
+    <!-- Main Content Area - COMPLETELY EMPTY -->
+    <!-- Add your content here between these comments -->
     <main class="main-content">
-        <!-- Page Header/Banner (যদি প্রয়োজন হয়) -->
-        <!--
-        <section class="page-header">
-            <div class="container">
-                <h1>Page Title Here</h1>
-                <p>Page description or subtitle here</p>
-            </div>
-        </section>
-        -->
-        
-        <!-- Page Specific Content START - এখানে প্রতিটি পেইজের content যোগ করুন -->
-        <section class="container">
-            <h1>Your Page Title</h1>
-            <p>This is your main content area. Replace this with your actual page content.</p>
+        <!-- 
+            ============================================
+            THIS AREA IS COMPLETELY EMPTY
+            ADD YOUR CONTENT HERE
+            ============================================
             
-            <!-- আপনার content এখানে যোগ করুন -->
-            <div style="margin-top: 30px; padding: 20px; background: var(--light); border-radius: 10px;">
-                <h2>Content Section</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-        </section>
-        <!-- Page Specific Content END -->
+            Example content structure:
+            
+            <section class="container">
+                <h1>Your Page Title</h1>
+                <p>Your content here...</p>
+            </section>
+            
+        -->
     </main>
+    <!-- End of main content area -->
     
     <!-- Footer container -->
     <div id="footer-container"></div>
@@ -236,6 +182,7 @@
                         if (contactBtn) contactBtn.classList.add('active');
                         break;
                     default:
+                        // Default to home
                         if (homeBtn) homeBtn.classList.add('active');
                 }
                 
@@ -248,7 +195,7 @@
         function getCurrentPageName() {
             const path = window.location.pathname;
             const pageName = path.split('/').pop().split('.').shift();
-            return pageName.toLowerCase();
+            return pageName ? pageName.toLowerCase() : 'home';
         }
 
         // Setup navigation button click events
@@ -260,10 +207,11 @@
             if (homeBtn) {
                 homeBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    if (getCurrentPageName() === 'index' || getCurrentPageName() === 'index-3') {
+                    const currentPage = getCurrentPageName();
+                    if (currentPage === 'index' || currentPage === 'index-3' || currentPage === 'home') {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     } else {
-                        window.location.href = 'index-3.html';
+                        window.location.href = 'index-3.html'; // Change to your home page
                     }
                 });
             }
@@ -271,10 +219,12 @@
             if (aboutBtn) {
                 aboutBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    if (getCurrentPageName() === 'about' || getCurrentPageName() === 'about-us') {
+                    const currentPage = getCurrentPageName();
+                    if (currentPage === 'about' || currentPage === 'about-us') {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     } else {
-                        window.location.href = 'about.html'; // আপনার about page ফাইলনেম দিন
+                        // Change to your about page filename
+                        window.location.href = 'about.html';
                     }
                 });
             }
@@ -282,14 +232,20 @@
             if (contactBtn) {
                 contactBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    if (getCurrentPageName() === 'contact' || getCurrentPageName() === 'contact-us') {
+                    const currentPage = getCurrentPageName();
+                    if (currentPage === 'contact' || currentPage === 'contact-us') {
                         document.querySelector('.footer')?.scrollIntoView({ behavior: 'smooth' });
                     } else {
-                        window.location.href = 'contact.html'; // আপনার contact page ফাইলনেম দিন
+                        // Change to your contact page filename
+                        window.location.href = 'contact.html';
                     }
                 });
             }
         }
+        
+        // Make navigation functions available globally
+        window.setActiveNavigation = setActiveNavigation;
+        window.getCurrentPageName = getCurrentPageName;
     </script>
 </body>
 </html>
