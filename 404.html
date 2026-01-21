@@ -25,6 +25,7 @@
             padding: 20px;
             background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
             background-size: 20px 20px;
+            overflow-y: auto; /* Ensure body can scroll if needed */
         }
         
         .container {
@@ -32,6 +33,10 @@
             width: 100%;
             text-align: center;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: auto; /* Remove fixed height */
         }
         
         .oops {
@@ -69,6 +74,7 @@
             color: #64748b;
             max-width: 600px;
             margin: 0 auto 30px;
+            padding: 0 15px;
         }
         
         .missing-url-container {
@@ -112,6 +118,7 @@
             justify-content: center;
             flex-wrap: wrap;
             margin-top: 10px;
+            margin-bottom: 30px; /* Add margin at bottom */
         }
         
         .back-button, .home-button {
@@ -191,7 +198,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 30px;
+            margin-top: 20px; /* Reduced margin */
+            margin-bottom: 20px; /* Added bottom margin */
             gap: 8px;
             height: 30px;
         }
@@ -236,20 +244,62 @@
             }
         }
         
-        /* Responsive design */
-        @media (max-width: 992px) {
+        /* Responsive design - Updated with better desktop handling */
+        @media (min-width: 1025px) {
+            /* Desktop specific optimizations */
             .container {
-                padding: 15px;
+                padding: 30px 20px;
+                max-height: 90vh; /* Limit height on desktop */
+                overflow-y: auto; /* Allow scrolling if content exceeds */
             }
             
-            .missing-url-container {
-                width: calc(100% - 30px);
-                padding: 16px 18px;
-                margin: 0 auto 35px;
+            .error-code {
+                font-size: 9rem; /* Slightly larger on desktop */
+            }
+            
+            .oops {
+                font-size: 5.5rem;
+            }
+            
+            .error-title {
+                font-size: 2.8rem;
+            }
+            
+            .button-group {
+                margin-bottom: 25px; /* Ensure space before dots */
+            }
+            
+            .loading-dots {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 1024px) and (min-width: 769px) {
+            /* Tablet landscape */
+            .container {
+                padding: 25px 20px;
+            }
+            
+            .error-code {
+                font-size: 7.5rem;
+            }
+            
+            .oops {
+                font-size: 4.5rem;
+            }
+            
+            .error-title {
+                font-size: 2.2rem;
+            }
+            
+            .error-message {
+                font-size: 1.2rem;
             }
         }
         
         @media (max-width: 768px) {
+            /* Tablet portrait and large phones */
             .oops {
                 font-size: 3.5rem;
             }
@@ -292,20 +342,28 @@
             
             .button-group {
                 gap: 12px;
+                margin-bottom: 25px;
             }
             
             .loading-dots {
-                margin-top: 25px;
+                margin-top: 20px;
+                margin-bottom: 15px;
             }
         }
         
         @media (max-width: 576px) {
+            /* Mobile phones */
             body {
                 padding: 15px;
+                justify-content: flex-start; /* Allow content to flow naturally */
+                min-height: 100vh;
+                height: auto;
             }
             
             .container {
-                padding: 10px;
+                padding: 15px 10px;
+                justify-content: flex-start;
+                min-height: auto;
             }
             
             .oops {
@@ -353,6 +411,7 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
+                margin-bottom: 25px;
             }
             
             .back-button, .home-button {
@@ -365,6 +424,7 @@
             
             .loading-dots {
                 margin-top: 20px;
+                margin-bottom: 15px;
                 gap: 6px;
             }
             
@@ -375,6 +435,7 @@
         }
         
         @media (max-width: 400px) {
+            /* Small phones */
             .oops {
                 font-size: 2.5rem;
             }
@@ -401,6 +462,7 @@
             
             .loading-dots {
                 margin-top: 15px;
+                margin-bottom: 10px;
             }
         }
         
@@ -413,6 +475,49 @@
         
         .error-code {
             animation: pulse 3s infinite ease-in-out;
+        }
+        
+        /* Ensure content fits on screen without forcing scroll */
+        @media (max-height: 700px) and (min-width: 769px) {
+            /* For shorter screens on desktop */
+            .container {
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+            
+            .oops {
+                font-size: 4rem;
+                margin-bottom: 5px;
+            }
+            
+            .error-code {
+                font-size: 6rem;
+                margin: 5px 0;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+                margin-bottom: 8px;
+            }
+            
+            .error-message {
+                font-size: 1.1rem;
+                margin-bottom: 20px;
+            }
+            
+            .missing-url-container {
+                padding: 12px 15px;
+                margin-bottom: 20px;
+            }
+            
+            .button-group {
+                margin-bottom: 15px;
+            }
+            
+            .loading-dots {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -492,6 +597,23 @@
             errorCode.addEventListener('mouseout', function() {
                 this.style.transform = 'scale(1)';
             });
+            
+            // Adjust container height for very small screens
+            function adjustLayoutForScreen() {
+                const container = document.querySelector('.container');
+                const windowHeight = window.innerHeight;
+                const containerHeight = container.scrollHeight;
+                
+                // If content is taller than viewport, adjust padding
+                if (containerHeight > windowHeight * 0.9 && window.innerWidth >= 769) {
+                    container.style.paddingTop = '10px';
+                    container.style.paddingBottom = '10px';
+                }
+            }
+            
+            // Run on load and resize
+            adjustLayoutForScreen();
+            window.addEventListener('resize', adjustLayoutForScreen);
         });
     </script>
 </body>
