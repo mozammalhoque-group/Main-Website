@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEO Profile | Johnathan Carter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d6bc4;
+            --accent: #e63946;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --border-radius: 10px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            background-color: #f5f7fb;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles - খালি রাখা হয়েছে */
+        header {
+            /* আপনার existing header এর জন্য placeholder */
+            height: 80px; /* আপনার header এর height অনুযায়ী adjust করুন */
+            background-color: transparent;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .profile-img-container {
+            position: relative;
+            max-width: 400px;
+        }
+        
+        .profile-img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .profile-img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .profile-badge {
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .hero-text h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(45, 107, 196, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Experience Section */
+        .experience {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 5px;
+            width: 1px;
+            height: calc(100% + 3rem);
+            background-color: var(--secondary);
+        }
+        
+        .timeline-item:last-child::after {
+            height: 100%;
+        }
+        
+        .timeline-date {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Contact Section - শুধু contact details, form নয় */
+        .contact {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .contact-items-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            background-color: var(--light-gray);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            color: var(--primary);
+        }
+        
+        .contact-details p {
+            color: var(--gray);
+            line-height: 1.5;
+        }
+        
+        /* Footer Styles - খালি রাখা হয়েছে */
+        footer {
+            /* আপনার existing footer এর জন্য placeholder */
+            height: 60px; /* আপনার footer এর height অনুযায়ী adjust করুন */
+            background-color: transparent;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .contact-items-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation for elements */
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header - আপনার existing header এর জায়গা -->
+    <header>
+        <!-- আপনার ওয়েবসাইটের header এখানে যাবে -->
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-img-container">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Johnathan Carter - CEO" class="profile-img">
+                    <div class="profile-badge">CEO & Founder</div>
+                </div>
+                <div class="hero-text">
+                    <h1>Johnathan Carter</h1>
+                    <p class="title">Chief Executive Officer at GlobalCorp</p>
+                    <p class="description">Visionary leader with over 15 years of experience in technology and business strategy. Under my leadership, GlobalCorp has grown from a startup to a multinational corporation with presence in 12 countries and annual revenue exceeding $500M.</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" id="contactBtn">
+                            <i class="fas fa-envelope"></i> Contact Me
+                        </button>
+                        <button class="btn btn-secondary" id="downloadCV">
+                            <i class="fas fa-download"></i> Download CV
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Driving Innovation & Growth</h3>
+                    <p>As CEO of GlobalCorp, I'm responsible for setting the company's strategic direction, driving growth, and ensuring we deliver exceptional value to our clients and shareholders.</p>
+                    <p>My leadership philosophy is centered on fostering innovation, empowering teams, and maintaining a customer-centric approach to business. I believe that sustainable success comes from creating win-win scenarios for all stakeholders.</p>
+                    <p>Before founding GlobalCorp, I held executive positions at several Fortune 500 companies, where I led digital transformation initiatives and drove operational excellence.</p>
+                </div>
+                <div class="about-text">
+                    <h3>Leadership Philosophy</h3>
+                    <p>I believe that true leadership is about serving others and creating an environment where people can do their best work. My approach combines strategic vision with practical execution.</p>
+                    <p>Throughout my career, I've focused on building diverse, high-performing teams that challenge the status quo and drive meaningful change.</p>
+                    <p>I'm passionate about mentoring the next generation of leaders and regularly speak at industry conferences and universities about leadership, innovation, and the future of technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2 class="section-title">Career Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - Present</div>
+                    <div class="timeline-title">CEO & Founder</div>
+                    <p>GlobalCorp - Grew the company from a 10-person startup to a 500+ employee multinational with presence in 12 countries.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 - 2020</div>
+                    <div class="timeline-title">Chief Operating Officer</div>
+                    <p>TechNova Inc. - Led digital transformation initiatives that increased operational efficiency by 40% and reduced costs by 25%.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2012 - 2016</div>
+                    <div class="timeline-title">VP of Business Development</div>
+                    <p>Innovate Solutions - Drove expansion into new markets, resulting in 300% revenue growth over 4 years.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2008 - 2012</div>
+                    <div class="timeline-title">Senior Strategy Consultant</div>
+                    <p>Global Consulting Partners - Advised Fortune 500 companies on growth strategies and digital transformation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - শুধু contact details, form নেই -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-items-container">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>johnathan.carter@globalcorp.com</p>
+                                <p>For business inquiries</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                                <p>Direct line to executive office</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Office</h4>
+                                <p>123 Business Avenue, Suite 1000</p>
+                                <p>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Availability</h4>
+                                <p>Monday - Friday: 9:00 AM - 5:00 PM EST</p>
+                                <p>Response time: Within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - আপনার existing footer এর জায়গা -->
+    <footer>
+        <!-- আপনার ওয়েবসাইটের footer এখানে যাবে -->
+    </footer>
+
+    <script>
+        // Contact button scroll
+        document.getElementById('contactBtn').addEventListener('click', () => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Download CV button
+        document.getElementById('downloadCV').addEventListener('click', () => {
+            alert('In a real application, this would download the CEO\'s CV. For this demo, we\'re just showing this message.');
+        });
+        
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate elements on scroll
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.hero-content, .about-content, .timeline-item, .contact-item');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.classList.add('animate');
+                    }
+                });
+            };
+            
+            // Run on initial load
+            animateOnScroll();
+            
+            // Run on scroll
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+</html>
