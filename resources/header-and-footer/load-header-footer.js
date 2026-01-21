@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+        // গ্লোবাল ফিক্সড CSS ইনজেকশন (এটিই সব পেজে Sticky কাজ করাবে)
+    const fixStickyCSS = document.createElement('style');
+    fixStickyCSS.innerHTML = `
+        #header-container { 
+            display: contents; 
+        }
+        body { 
+            overflow-x: clip; /* sticky পজিশন সচল রাখার জন্য */
+        }
+        .main-nav {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 9999 !important;
+        }
+    `;
+    document.head.appendChild(fixStickyCSS);
     
     // ১. হেডার লোড করা
     fetch('/resources/header-and-footer/header.html')
