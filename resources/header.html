@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header - Mozammal Hoque Group</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #d4a017;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .top-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+        }
+
+        .top-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .company-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .header-contact {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.9rem;
+        }
+
+        .header-contact i {
+            margin-right: 8px;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .nav-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--light-gray);
+            color: var(--secondary);
+        }
+
+        .nav-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            min-width: 280px;
+            display: none;
+            z-index: 1001;
+            border-top: 3px solid var(--secondary);
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: var(--dark);
+            text-decoration: none;
+            border-bottom: 1px solid var(--light-gray);
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+
+        .has-submenu {
+            position: relative;
+        }
+
+        .has-submenu > .dropdown-item {
+            padding-right: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-text {
+            flex: 1;
+        }
+
+        .arrow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+        }
+
+        .submenu-toggle {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .has-submenu.active .submenu-toggle {
+            transform: rotate(90deg);
+            color: var(--primary);
+        }
+
+        .sub-menu {
+            display: none;
+            background-color: #f8f9fa;
+            padding-left: 0;
+        }
+
+        .sub-menu.show {
+            display: block;
+        }
+
+        .sub-menu a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px 10px 35px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-decoration: none;
+            border-bottom: 1px solid var(--light-gray);
+            transition: all 0.2s;
+        }
+
+        .sub-menu a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+            padding-left: 40px;
+        }
+
+        .page-arrow {
+            font-size: 0.75rem;
+            color: var(--gray);
+            transition: all 0.2s;
+            opacity: 0.7;
+        }
+
+        .sub-menu a:hover .page-arrow {
+            color: var(--primary);
+            opacity: 1;
+            transform: translateX(3px);
+        }
+
+        /* Desktop: hover and click both work */
+        @media (min-width: 993px) {
+            .has-submenu:hover .sub-menu {
+                display: block;
+            }
+            
+            .has-submenu:hover .submenu-toggle {
+                transform: rotate(90deg);
+                color: var(--primary);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .top-header .container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .nav-buttons {
+                flex-wrap: wrap;
+            }
+            
+            .nav-btn {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-buttons {
+                justify-content: space-between;
+            }
+            
+            .nav-btn {
+                padding: 10px 8px;
+                font-size: 0.85rem;
+                flex: 1;
+                text-align: center;
+            }
+            
+            .company-name {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="https://mozammalhoque-group.com.bd/assets/brand/kit/white.png" alt="Mozammal Hoque Group Logo" class="logo-img" style="height: 100px; margin-bottom: 10px;">
+                <div class="company-name">Mozammal Hoque Group</div>
+            </div>
+            <div class="header-contact">
+                <div><i class="fas fa-phone"></i> +880 9638 325600</div>
+                <div><i class="fas fa-envelope"></i> info@mozammalhoque-group.com.bd</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-buttons">
+                <button class="nav-btn" id="dropdown-btn">
+                    <i class="fas fa-bars"></i> Menu
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <!-- About Section -->
+                        <div class="has-submenu">
+                            <a href="#" class="dropdown-item">
+                                <span class="menu-text">About</span>
+                                <span class="arrow-container">
+                                    <i class="fas fa-chevron-right submenu-toggle"></i>
+                                </span>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="#">
+                                    <span>Company Overview</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Our History</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Mission & Vision</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Core Values</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Our Achievements</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Member Section -->
+                        <div class="has-submenu">
+                            <a href="#" class="dropdown-item">
+                                <span class="menu-text">Member</span>
+                                <span class="arrow-container">
+                                    <i class="fas fa-chevron-right submenu-toggle"></i>
+                                </span>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="#">
+                                    <span>Executive Committee</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Management Team</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Key Personnel</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Department Heads</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Board of Directors Section -->
+                        <div class="has-submenu">
+                            <a href="#" class="dropdown-item">
+                                <span class="menu-text">Board of Directors</span>
+                                <span class="arrow-container">
+                                    <i class="fas fa-chevron-right submenu-toggle"></i>
+                                </span>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="#">
+                                    <span>Chairman</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Managing Director</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Executive Directors</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Independent Directors</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Advisory Board</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- News and Events Section -->
+                        <div class="has-submenu">
+                            <a href="#" class="dropdown-item">
+                                <span class="menu-text">News and Events</span>
+                                <span class="arrow-container">
+                                    <i class="fas fa-chevron-right submenu-toggle"></i>
+                                </span>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="#">
+                                    <span>Latest News</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Press Releases</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Upcoming Events</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Media Coverage</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- New Dropdown Section - Corporate Affairs -->
+                        <div class="has-submenu">
+                            <a href="#" class="dropdown-item">
+                                <span class="menu-text">Corporate Affairs</span>
+                                <span class="arrow-container">
+                                    <i class="fas fa-chevron-right submenu-toggle"></i>
+                                </span>
+                            </a>
+                            <div class="sub-menu">
+                                <a href="#">
+                                    <span>Corporate Governance</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Compliance & Ethics</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Investor Relations</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Annual Reports</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                                <a href="#">
+                                    <span>Sustainability Report</span>
+                                    <i class="fas fa-arrow-right page-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+                <button class="nav-btn active" id="home-btn">Home</button>
+                <button class="nav-btn" id="about-btn">About Us</button>
+                <button class="nav-btn" id="contact-btn">Contact Us</button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Header specific JavaScript
+        const dropdownBtn = document.getElementById('dropdown-btn');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const homeBtn = document.getElementById('home-btn');
+        const aboutBtn = document.getElementById('about-btn');
+        const contactBtn = document.getElementById('contact-btn');
+
+        // Navigation button functionality
+        dropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+            closeAllSubMenus();
+        });
+
+        // Close dropdown when clicking elsewhere
+        document.addEventListener('click', (e) => {
+            if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+                closeAllSubMenus();
+            }
+        });
+
+        // Navigation buttons
+        homeBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            updateActiveNav(homeBtn);
+        });
+
+        aboutBtn.addEventListener('click', () => {
+            // This will be overridden by the main page script
+            if (typeof document.getElementById('about') !== 'undefined') {
+                document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+            }
+            updateActiveNav(aboutBtn);
+        });
+
+        contactBtn.addEventListener('click', () => {
+            // This will be overridden by the main page script
+            if (typeof document.querySelector('.footer') !== 'undefined') {
+                document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
+            }
+            updateActiveNav(contactBtn);
+        });
+
+        // Update active navigation button
+        function updateActiveNav(activeBtn) {
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            activeBtn.classList.add('active');
+        }
+
+        // Function to close all sub-menus
+        function closeAllSubMenus() {
+            document.querySelectorAll('.has-submenu').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.sub-menu').classList.remove('show');
+            });
+        }
+
+        // Function to toggle sub-menu
+        function toggleSubMenu(clickedItem) {
+            const submenu = clickedItem.querySelector('.sub-menu');
+            const arrow = clickedItem.querySelector('.submenu-toggle');
+            const isActive = clickedItem.classList.contains('active');
+            
+            // Close all other sub-menus
+            document.querySelectorAll('.has-submenu').forEach(item => {
+                if (item !== clickedItem) {
+                    item.classList.remove('active');
+                    item.querySelector('.sub-menu').classList.remove('show');
+                }
+            });
+            
+            // Toggle current sub-menu
+            if (isActive) {
+                clickedItem.classList.remove('active');
+                submenu.classList.remove('show');
+            } else {
+                clickedItem.classList.add('active');
+                submenu.classList.add('show');
+            }
+        }
+
+        // SUB-MENU TOGGLE FUNCTIONALITY
+        // Get all sub-menu items
+        const submenuItems = document.querySelectorAll('.has-submenu');
+        
+        // Add click event to each sub-menu item
+        submenuItems.forEach(item => {
+            // Add click event to the dropdown item (link)
+            item.querySelector('.dropdown-item').addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleSubMenu(item);
+            });
+        });
+
+        // Close sub-menus when clicking on a sub-menu link
+        document.querySelectorAll('.sub-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // Close the dropdown menu
+                dropdownMenu.classList.remove('show');
+                // Close all sub-menus
+                closeAllSubMenus();
+            });
+        });
+
+        // Also handle hover for desktop (for better UX)
+        submenuItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                if (window.innerWidth >= 993) {
+                    // Close all other sub-menus
+                    closeAllSubMenus();
+                    
+                    // Open this sub-menu
+                    this.classList.add('active');
+                    this.querySelector('.sub-menu').classList.add('show');
+                }
+            });
+        });
+
+        // Close sub-menus when mouse leaves dropdown menu on desktop
+        dropdownMenu.addEventListener('mouseleave', function() {
+            if (window.innerWidth >= 993) {
+                closeAllSubMenus();
+            }
+        });
+
+        // Update navigation based on current page
+        document.addEventListener('DOMContentLoaded', function() {
+            // This function can be called from main page to update navigation
+            window.updateHeaderNavigation = function(page) {
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                switch(page) {
+                    case 'home':
+                        homeBtn.classList.add('active');
+                        break;
+                    case 'about':
+                        aboutBtn.classList.add('active');
+                        break;
+                    case 'contact':
+                        contactBtn.classList.add('active');
+                        break;
+                }
+            };
+        });
+    </script>
+</body>
+</html>
