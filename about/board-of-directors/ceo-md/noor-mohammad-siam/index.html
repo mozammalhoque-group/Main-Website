@@ -556,7 +556,8 @@
         
         // Download CV button
         document.getElementById('ceo-downloadCV').addEventListener('click', () => {
-            alert('In a real application, this would download the CEO\'s CV. For this demo, we\'re just showing this message.');
+            const cvUrl = 'https://noormohammadsiam.com';
+            window.open(cvUrl, '_blank');
         });
         
         // Initialize animations when page loads
