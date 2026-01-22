@@ -45,6 +45,63 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
+                /* Main Hero Section with Background Image */
+        .ceo-main-hero {
+            background: 
+                linear-gradient(rgba(26, 58, 108, 0.85), rgba(26, 58, 108, 0.9)),
+                url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            min-height: auto;
+        }
+        
+        .ceo-main-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .ceo-main-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .ceo-main-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .ceo-hero-divider {
+            width: 80px;
+            height: 3px;
+            background-color: var(--ceo-accent);
+            margin: 1.5rem auto;
+            border: none;
+        }
+        
+        .ceo-hero-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
         
         /* Hero Section */
         .ceo-hero {
@@ -347,6 +404,20 @@
 <body>
     <!-- Header container -->
     <div id="header-container"></div>
+
+        <!-- Main Hero Section with Background Image -->
+    <section class="ceo-main-hero">
+        <div class="ceo-container">
+            <div class="ceo-main-hero-content">
+                <h1 class="ceo-main-title">CEO Profile</h1>
+                <p class="ceo-main-subtitle">Meet our distinguished CEO who provides strategic guidance and visionary leadership to drive our company's success and uphold our commitment to excellence.</p>
+                <hr class="ceo-hero-divider">
+                <div class="ceo-hero-description">
+                    Our CEO brings exceptional leadership with diverse expertise from various industries. His collective wisdom and strategic vision guide our company towards sustainable growth and innovation while ensuring the highest standards of corporate governance.
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Hero Section -->
     <section class="ceo-hero" id="ceo-home">
