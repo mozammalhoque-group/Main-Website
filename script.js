@@ -6,11 +6,11 @@
         const sisterConcerns = [
             { 
                 name: "Mozammal Hoque Market", 
-                logo: "/assets/brand/kit/black.png"
+                logo: "/assets/brand/logo/sister-concerns/market.png"
             },
             { 
                 name: "Mozammal Hoque Foundation", 
-                logo: "/assets/brand/kit/black.png" 
+                logo: "/assets/brand/logo/sister-concerns/foundation.png" 
             },
         ];
 
