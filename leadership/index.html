@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Board of Directors | Mozammal Hoque Group</title>
+    <title>Our Leadership | Mozammal Hoque Group</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- New Luxury Fonts: Playfair Display & Plus Jakarta Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -44,10 +44,42 @@
     .hero h1 { font-size: 58px; margin-bottom: 20px; color: white; }
     .hero p { font-size: 18px; color: rgba(255, 255, 255, 0.8); max-width: 700px; margin: 0 auto; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 300; }
 
-    /* Board Intro */
-    .board-intro { text-align: center; margin: 90px auto 70px; max-width: 750px; }
-    .board-intro h2 { font-size: 40px; margin-bottom: 15px; }
-    .board-intro p { color: var(--text-body); font-size: 16px; }
+        /* Board Intro */
+        .board-intro {
+            text-align: center;
+            margin-bottom: 80px; /* Increased margin for better spacing */
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 20px; /* Added padding at top */
+
+        }
+
+        .board-intro h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .board-intro h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .board-intro p {
+            font-size: 18px;
+            color: var(--text-light);
+            line-height: 1.8; /* Added line height for better readability */
+            margin-top: 25px; /* Added margin at top */
+        }
+
 
     /* --- BOARD MEMBER GRID --- */
     .board-members {
@@ -254,14 +286,14 @@
         {
             name: "Mozammal Hoque",
             position: "Founder & Chairman",
-            img: "https://via.placeholder.com/600x800/0f172a/ffffff?text=Mozammal",
-            profileUrl: "#" // এখানে আসল লিংক বসাবেন
+            img: "#",
+            profileUrl: "#" 
         },
         {
             name: "Marium Akter",
             position: "Co-Founder",
-            img: "https://via.placeholder.com/600x800/0f172a/ffffff?text=Marium",
-            profileUrl: "#" // এখানে আসল লিংক বসাবেন
+            img: "#",
+            profileUrl: "#" 
         },
         {
             name: "Noor Mohammad Siam",
