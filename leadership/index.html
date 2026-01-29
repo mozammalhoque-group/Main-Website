@@ -34,54 +34,49 @@
 
     .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
-    /* Hero Section (Updated Fonts) */
+    /* --- HERO SECTION --- */
     .hero {
         background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
         background-size: cover;
         background-position: center;
         color: white;
         text-align: center;
-        padding: 120px 0 90px;
-        margin-bottom: 40px; /* Added */
+        padding: 140px 0 120px;
+        margin-bottom: 80px; /* Hero এবং কার্ডের মাঝে ফাঁকা */
     }
-    .hero h1 { font-size: 58px; margin-bottom: 20px; color: white; }
-    .hero p { font-size: 18px; color: rgba(255, 255, 255, 0.8); max-width: 700px; margin: 0 auto; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 300; }
+    
+    .hero h1 { 
+        font-size: 58px; 
+        margin-bottom: 35px; /* দাগের জন্য একটু বেশি জায়গা রাখা হলো */
+        color: white; 
+        
+        /* দাগ বা লাইন তৈরি করার জন্য এই তিনটি লাইন জরুরি */
+        position: relative;
+        display: inline-block;
+    }
 
-        /* Board Intro */
-        .board-intro {
-            text-align: center;
-            margin-bottom: 80px; /* Increased margin for better spacing */
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-top: 80px; /* Added padding at top */
-
-        }
-
-        .board-intro h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .board-intro h2:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .board-intro p {
-            font-size: 18px;
-            color: var(--text-body);
-            line-height: 1.8; /* Added line height for better readability */
-            margin-top: 25px; /* Added margin at top */
-        }
+    /* হিরো সেকশনের টাইটেলের নিচের দাগ */
+    .hero h1:after {
+        content: '';
+        position: absolute;
+        width: 100px;         /* দাগের দৈর্ঘ্য */
+        height: 4px;          /* দাগের উচ্চতা */
+        background-color: var(--accent); /* সোনালী কালার */
+        bottom: -15px;        /* লেখা থেকে কতটা নিচে হবে */
+        left: 50%;
+        transform: translateX(-50%); /* মাঝখানে আনার জন্য */
+        border-radius: 2px;
+    }
+    
+    .hero p { 
+        font-size: 19px; 
+        color: rgba(255, 255, 255, 0.85); 
+        max-width: 800px; 
+        margin: 0 auto; 
+        font-family: 'Plus Jakarta Sans', sans-serif; 
+        font-weight: 300; 
+        line-height: 1.8;
+    }
 
 
     /* --- BOARD MEMBER GRID --- */
@@ -261,15 +256,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Board of Directors</h1>
+            <h1>Our Leadership</h1>
             <p>Meet our distinguished board members who provide strategic guidance and governance to drive our company's success and uphold our commitment to excellence.</p>
         </div>
-    </section>
-
-    <!-- Board Introduction -->
-    <section class="container board-intro">
-        <h2>Our Leadership</h2>
-        <p>Our Board of Directors brings together exceptional leaders with diverse expertise from various industries. Their collective wisdom and strategic vision guide our company towards sustainable growth and innovation while ensuring the highest standards of corporate governance.</p>
     </section>
 
     <!-- Board Members -->
