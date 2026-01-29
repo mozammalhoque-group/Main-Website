@@ -51,7 +51,7 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            padding-top: 20px; /* Added padding at top */
+            padding-top: 80px; /* Added padding at top */
 
         }
 
@@ -307,19 +307,23 @@
         const boardMembersContainer = document.getElementById('boardMembers');
         let html = '';
         
+        // Placeholder image URL
+        const placeholderImg = "https://via.placeholder.com/600x800?text=No+Image";
+
         boardMembers.forEach(member => {
+            // Check if img is empty or null, use placeholder immediately if so
+            const imgSrc = member.img ? member.img : placeholderImg;
+
             html += `
             <div class="member-card">
-                <!-- Image Section (Zoom effect on hover, but NOT clickable) -->
                 <div class="member-img-frame">
-                    <img src="${member.img}" alt="${member.name}" onerror="this.src='https://via.placeholder.com/600x800?text=No+Image'">
+                    <img src="${imgSrc}" alt="${member.name}" onerror="this.onerror=null;this.src='${placeholderImg}';">
                 </div>
                 
                 <div class="member-info">
                     <h3>${member.name}</h3>
                     <span class="member-position">${member.position}</span>
                     
-                    <!-- Only this part is clickable and takes to profile -->
                     <a href="${member.profileUrl}" class="profile-link">
                         <div class="link-content">
                             <span class="link-dash"></span>
