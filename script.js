@@ -1,7 +1,6 @@
-
         // Auto-update copyright year
         document.getElementById("copyright-year").textContent = new Date().getFullYear();
-
+        
         // Data for sister concerns logos
         const sisterConcerns = [
             { 
@@ -13,31 +12,10 @@
                 logo: "/assets/brand/logo/sister-concerns/foundation.png" 
             },
         ];
-
-        // Data for team members
-        const teamMembers = [
-            { 
-                name: "Mozammal Hoque", 
-                designation: "Chairman & Founder", 
-                image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7jkoB3WU_s0RUIOzPsDACw3OrLY9yJpr56x1F_0eNeK_C4fKYvuhM69fOpGYQGp4eXVvGxRu1ICpPeJCjzh9X6Z49qNcfNQ9dKCDAa31sglZ3cIlQPiU4bYsKbz-qPsPmAOSw6pNFtiNZPli13DcTbIWLj6u-uGGMSiHGLUepblFiW8Mh30k0kot3/s16000/Mozammal_Hoque%5B1%5D.png"
-            },
-            { 
-                name: "Marium Akter", 
-                designation: "Co-Founder", 
-                image: "/assets/brand/kit/black.png"
-            },
-            { 
-                name: "Noor Mohammad Siam", 
-                designation: "CEO & Managing Director", 
-                image: "https://noormohammadsiam.github.io/noor-mohammad-siam.jpg" 
-            },
-        ];
-
+        
         // DOM elements
         const logoSlider = document.getElementById('logo-slider');
         const logoDots = document.getElementById('logo-dots');
-        const teamSlider = document.getElementById('team-slider');
-        const teamDots = document.getElementById('team-dots');
         
         const dropdownBtn = document.getElementById('dropdown-btn');
         const dropdownMenu = document.getElementById('dropdown-menu');
@@ -45,27 +23,19 @@
         const aboutBtn = document.getElementById('about-btn');
         const contactBtn = document.getElementById('contact-btn');
         
-        // Slider state - UPDATED: Always 1 slide per view
+        // Slider state
         let logoCurrentSlide = 0;
-        let teamCurrentSlide = 0;
-        let logoSlidesPerView = 1; // Always show 1 logo at a time
-        let teamSlidesPerView = 1; // Always show 1 team member at a time
+        let logoSlidesPerView = 1; // সবসময় ১টি লোগো দেখাবে
         let logoAutoSlideInterval;
-        let teamAutoSlideInterval;
-
+        
         // Initialize sliders
         function initSliders() {
-            // UPDATED: Always show 1 slide at a time for both sections
+            // স্লাইডার ক্লিয়ার করা
+            logoSlider.innerHTML = '';
             logoSlidesPerView = 1;
-            teamSlidesPerView = 1;
-            
-            // Calculate slide width based on slides per view (always 100% for 1 slide)
-            const logoSlideWidth = 100 / logoSlidesPerView;
-            const teamSlideWidth = 100 / teamSlidesPerView;
             
             // Create logo slides
-            logoSlider.innerHTML = '';
-            sisterConcerns.forEach((concern, index) => {
+            sisterConcerns.forEach((concern) => {
                 const slide = document.createElement('div');
                 slide.className = 'slide';
                 slide.innerHTML = `
@@ -77,169 +47,136 @@
                 logoSlider.appendChild(slide);
             });
             
-            // Calculate number of dots for logo slider
+            // ডট তৈরি করা
             const logoDotCount = Math.ceil(sisterConcerns.length / logoSlidesPerView);
             createDots(logoDots, logoDotCount);
             
-            // Create team slides
-            teamSlider.innerHTML = '';
-            teamMembers.forEach((member, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'slide';
-                slide.innerHTML = `
-                    <div class="team-slide">
-                        <img src="${member.image}" alt="${member.name}" class="team-img">
-                        <div class="team-info">
-                            <h4>${member.name}</h4>
-                            <p>${member.designation}</p>
-                        </div>
-                    </div>
-                `;
-                teamSlider.appendChild(slide);
-            });
+            // স্লাইডারের পজিশন সেট করা
+            updateSliderPosition(logoSlider, logoCurrentSlide);
             
-            // Calculate number of dots for team slider
-            const teamDotCount = Math.ceil(teamMembers.length / teamSlidesPerView);
-            createDots(teamDots, teamDotCount);
-            
-            // Update slider positions
-            updateSliderPosition(logoSlider, logoCurrentSlide, logoSlidesPerView);
-            updateSliderPosition(teamSlider, teamCurrentSlide, teamSlidesPerView);
-            
-            // Start auto sliding
+            // অটো স্লাইড শুরু করা
             startAutoSlide();
         }
-
+        
         // Create dots for slider
         function createDots(dotsContainer, dotCount) {
             dotsContainer.innerHTML = '';
             for (let i = 0; i < dotCount; i++) {
                 const dot = document.createElement('div');
                 dot.className = 'dot';
+                // প্রথম ডটটি অ্যাক্টিভ করা
                 if (i === 0) dot.classList.add('active');
+                
+                // ডট ক্লিক ইভেন্ট
                 dot.addEventListener('click', () => {
-                    if (dotsContainer === logoDots) {
-                        logoCurrentSlide = i * logoSlidesPerView;
-                        updateSliderPosition(logoSlider, logoCurrentSlide, logoSlidesPerView);
-                        updateDots(dotsContainer, i);
-                    } else {
-                        teamCurrentSlide = i * teamSlidesPerView;
-                        updateSliderPosition(teamSlider, teamCurrentSlide, teamSlidesPerView);
-                        updateDots(dotsContainer, i);
-                    }
+                    logoCurrentSlide = i * logoSlidesPerView;
+                    updateSliderPosition(logoSlider, logoCurrentSlide);
+                    updateDots(dotsContainer, i);
+                    
+                    // ম্যানুয়ালি ক্লিক করলে টাইমার রিসেট হবে
+                    startAutoSlide();
                 });
                 dotsContainer.appendChild(dot);
             }
         }
-
+        
         // Update slider position
-        function updateSliderPosition(slider, currentSlide, slidesPerView) {
-            const slideWidth = 100 / slidesPerView;
+        function updateSliderPosition(slider, currentSlide) {
+            const slideWidth = 100 / logoSlidesPerView;
             const translateX = -currentSlide * slideWidth;
             slider.style.transform = `translateX(${translateX}%)`;
         }
-
-        // Update active dot
+        
+        // Update active dot class
         function updateDots(dotsContainer, activeIndex) {
             const dots = dotsContainer.querySelectorAll('.dot');
             dots.forEach((dot, index) => {
+                // CSS এ transition থাকায় ক্লাস চেঞ্জ হলেই অ্যানিমেশন হবে
                 dot.classList.toggle('active', index === activeIndex);
             });
         }
-
+        
         // Next slide function
-        function nextSlide(sliderType) {
-            if (sliderType === 'logo') {
-                const maxSlide = sisterConcerns.length - logoSlidesPerView;
-                if (logoCurrentSlide >= maxSlide) {
-                    logoCurrentSlide = 0;
-                } else {
-                    logoCurrentSlide += logoSlidesPerView;
-                }
-                updateSliderPosition(logoSlider, logoCurrentSlide, logoSlidesPerView);
-                updateDots(logoDots, Math.floor(logoCurrentSlide / logoSlidesPerView));
+        function nextSlide() {
+            const maxSlide = sisterConcerns.length - logoSlidesPerView;
+            
+            if (logoCurrentSlide >= maxSlide) {
+                logoCurrentSlide = 0; // শেষে গেলে শুরুতে ফিরে আসবে
             } else {
-                const maxSlide = teamMembers.length - teamSlidesPerView;
-                if (teamCurrentSlide >= maxSlide) {
-                    teamCurrentSlide = 0;
-                } else {
-                    teamCurrentSlide += teamSlidesPerView;
-                }
-                updateSliderPosition(teamSlider, teamCurrentSlide, teamSlidesPerView);
-                updateDots(teamDots, Math.floor(teamCurrentSlide / teamSlidesPerView));
+                logoCurrentSlide += logoSlidesPerView;
             }
+            
+            updateSliderPosition(logoSlider, logoCurrentSlide);
+            updateDots(logoDots, Math.floor(logoCurrentSlide / logoSlidesPerView));
         }
-
+        
         // Previous slide function
-        function prevSlide(sliderType) {
-            if (sliderType === 'logo') {
-                const maxSlide = sisterConcerns.length - logoSlidesPerView;
-                if (logoCurrentSlide <= 0) {
-                    logoCurrentSlide = maxSlide;
-                } else {
-                    logoCurrentSlide -= logoSlidesPerView;
-                }
-                updateSliderPosition(logoSlider, logoCurrentSlide, logoSlidesPerView);
-                updateDots(logoDots, Math.floor(logoCurrentSlide / logoSlidesPerView));
+        function prevSlide() {
+            const maxSlide = sisterConcerns.length - logoSlidesPerView;
+            
+            if (logoCurrentSlide <= 0) {
+                logoCurrentSlide = maxSlide; // শুরুতে থাকলে শেষে যাবে
             } else {
-                const maxSlide = teamMembers.length - teamSlidesPerView;
-                if (teamCurrentSlide <= 0) {
-                    teamCurrentSlide = maxSlide;
-                } else {
-                    teamCurrentSlide -= teamSlidesPerView;
-                }
-                updateSliderPosition(teamSlider, teamCurrentSlide, teamSlidesPerView);
-                updateDots(teamDots, Math.floor(teamCurrentSlide / teamSlidesPerView));
+                logoCurrentSlide -= logoSlidesPerView;
             }
+            
+            updateSliderPosition(logoSlider, logoCurrentSlide);
+            updateDots(logoDots, Math.floor(logoCurrentSlide / logoSlidesPerView));
         }
-
+        
         // Start auto sliding
         function startAutoSlide() {
             clearInterval(logoAutoSlideInterval);
-            clearInterval(teamAutoSlideInterval);
             
+            // ৪ সেকেন্ড পর পর স্লাইড চেঞ্জ হবে
             logoAutoSlideInterval = setInterval(() => {
-                nextSlide('logo');
+                nextSlide();
             }, 4000);
-            
-            teamAutoSlideInterval = setInterval(() => {
-                nextSlide('team');
-            }, 4500);
         }
-
+        
         // Navigation button functionality
-        dropdownBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            dropdownMenu.classList.toggle('show');
-            // Close all sub-menus when opening main menu
-            closeAllSubMenus();
-        });
-
+        if(dropdownBtn) {
+            dropdownBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('show');
+                closeAllSubMenus();
+            });
+        }
+        
         // Close dropdown when clicking elsewhere
         document.addEventListener('click', (e) => {
-            if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                dropdownMenu.classList.remove('show');
-                // Close all sub-menus when clicking outside
-                closeAllSubMenus();
+            if (dropdownBtn && dropdownMenu) {
+                if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                    closeAllSubMenus();
+                }
             }
         });
-
-        // Navigation buttons
-        homeBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            updateActiveNav(homeBtn);
-        });
-
-        aboutBtn.addEventListener('click', () => {
-            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-            updateActiveNav(aboutBtn);
-        });
-
-        contactBtn.addEventListener('click', () => {
-            document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
-            updateActiveNav(contactBtn);
-        });
-
+        
+        // Navigation buttons logic
+        if(homeBtn) {
+            homeBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                updateActiveNav(homeBtn);
+            });
+        }
+        
+        if(aboutBtn) {
+            aboutBtn.addEventListener('click', () => {
+                const aboutSection = document.getElementById('about');
+                if(aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' });
+                updateActiveNav(aboutBtn);
+            });
+        }
+        
+        if(contactBtn) {
+            contactBtn.addEventListener('click', () => {
+                const footer = document.querySelector('.footer');
+                if(footer) footer.scrollIntoView({ behavior: 'smooth' });
+                updateActiveNav(contactBtn);
+            });
+        }
+        
         // Update active navigation button
         function updateActiveNav(activeBtn) {
             document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -247,122 +184,123 @@
             });
             activeBtn.classList.add('active');
         }
-
+        
         // Function to close all sub-menus
         function closeAllSubMenus() {
             document.querySelectorAll('.has-submenu').forEach(item => {
                 item.classList.remove('active');
-                item.querySelector('.sub-menu').classList.remove('show');
+                const subMenu = item.querySelector('.sub-menu');
+                if(subMenu) subMenu.classList.remove('show');
             });
         }
-
+        
         // Function to toggle sub-menu
         function toggleSubMenu(clickedItem) {
             const submenu = clickedItem.querySelector('.sub-menu');
-            const arrow = clickedItem.querySelector('.submenu-toggle');
             const isActive = clickedItem.classList.contains('active');
             
-            // Close all other sub-menus
+            // Close all other sub-menus first
             document.querySelectorAll('.has-submenu').forEach(item => {
                 if (item !== clickedItem) {
                     item.classList.remove('active');
-                    item.querySelector('.sub-menu').classList.remove('show');
+                    const otherSub = item.querySelector('.sub-menu');
+                    if(otherSub) otherSub.classList.remove('show');
                 }
             });
             
             // Toggle current sub-menu
             if (isActive) {
                 clickedItem.classList.remove('active');
-                submenu.classList.remove('show');
+                if(submenu) submenu.classList.remove('show');
             } else {
                 clickedItem.classList.add('active');
-                submenu.classList.add('show');
+                if(submenu) submenu.classList.add('show');
             }
         }
-
-        // SUB-MENU TOGGLE FUNCTIONALITY
-        // Get all sub-menu items
-        const submenuItems = document.querySelectorAll('.has-submenu');
         
-        // Add click event to each sub-menu item
+        // Sub-menu Event Listeners
+        const submenuItems = document.querySelectorAll('.has-submenu');
         submenuItems.forEach(item => {
-            // Add click event to the dropdown item (link)
-            item.querySelector('.dropdown-item').addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleSubMenu(item);
-            });
-        });
-
-        // Close sub-menus when clicking on a sub-menu link
-        document.querySelectorAll('.sub-menu a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.stopPropagation();
-                // Close the dropdown menu
-                dropdownMenu.classList.remove('show');
-                // Close all sub-menus
-                closeAllSubMenus();
-            });
-        });
-
-        // Also handle hover for desktop (for better UX)
-        submenuItems.forEach(item => {
+            const link = item.querySelector('.dropdown-item');
+            if(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleSubMenu(item);
+                });
+            }
+        
+            // Hover effect for desktop
             item.addEventListener('mouseenter', function() {
                 if (window.innerWidth >= 993) {
-                    // Close all other sub-menus
                     closeAllSubMenus();
-                    
-                    // Open this sub-menu
                     this.classList.add('active');
-                    this.querySelector('.sub-menu').classList.add('show');
+                    const sub = this.querySelector('.sub-menu');
+                    if(sub) sub.classList.add('show');
                 }
             });
         });
-
-        // Close sub-menus when mouse leaves dropdown menu on desktop
-        dropdownMenu.addEventListener('mouseleave', function() {
-            if (window.innerWidth >= 993) {
+        
+        // Close sub-menus when clicking inside links
+        document.querySelectorAll('.sub-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if(dropdownMenu) dropdownMenu.classList.remove('show');
                 closeAllSubMenus();
-            }
+            });
         });
-
-        // Touch events for mobile slider
+        
+        if(dropdownMenu) {
+            dropdownMenu.addEventListener('mouseleave', function() {
+                if (window.innerWidth >= 993) {
+                    closeAllSubMenus();
+                }
+            });
+        }
+        
+        // Touch events for mobile slider (Swipe Support)
         let startX = 0;
         let endX = 0;
-
+        
         function handleTouchStart(e) {
             startX = e.touches[0].clientX;
         }
-
+        
         function handleTouchMove(e) {
             endX = e.touches[0].clientX;
         }
-
-        function handleTouchEnd(sliderType) {
-            const threshold = 50;
+        
+        function handleTouchEnd() {
+            const threshold = 50; // Minimum swipe distance
             const diff = startX - endX;
             
             if (Math.abs(diff) > threshold) {
                 if (diff > 0) {
-                    // Swipe left - next slide
-                    nextSlide(sliderType);
+                    // Swipe Left -> Next
+                    nextSlide();
                 } else {
-                    // Swipe right - previous slide
-                    prevSlide(sliderType);
+                    // Swipe Right -> Prev
+                    prevSlide();
                 }
+                // Reset timer on manual swipe
+                startAutoSlide();
             }
+            // Reset coordinates
+            startX = 0;
+            endX = 0;
         }
-
-        logoSlider.addEventListener('touchstart', handleTouchStart);
-        logoSlider.addEventListener('touchmove', handleTouchMove);
-        logoSlider.addEventListener('touchend', () => handleTouchEnd('logo'));
-
-        teamSlider.addEventListener('touchstart', handleTouchStart);
-        teamSlider.addEventListener('touchmove', handleTouchMove);
-        teamSlider.addEventListener('touchend', () => handleTouchEnd('team'));
-
+        
+        if(logoSlider) {
+            logoSlider.addEventListener('touchstart', handleTouchStart, {passive: true});
+            logoSlider.addEventListener('touchmove', handleTouchMove, {passive: true});
+            logoSlider.addEventListener('touchend', handleTouchEnd);
+        }
+        
         // Initialize on load
         window.addEventListener('load', initSliders);
         
-        // Reinitialize on resize
-        window.addEventListener('resize', initSliders);
+        // Reinitialize on resize (to fix layout if needed)
+        window.addEventListener('resize', () => {
+            // Optional: Debounce resize if performance is an issue
+            initSliders();
+        });
